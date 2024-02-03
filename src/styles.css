@@ -6,7 +6,6 @@ upload {
   flex-direction: column; /* Updated to column layout */
   font-family: 'Syne', sans-serif;
 }
-
 .containerr {
   display: flex; /* Use flexbox to keep boxes side by side */
   flex-wrap: wrap;
