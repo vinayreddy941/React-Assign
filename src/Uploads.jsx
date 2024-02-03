@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import "./styles.css";
-import * as XLSX from 'xlsx';
+import * as XLSX from "xlsx";
 
 const UploadPage = () => {
   const fileInputRef = useRef(null);
@@ -14,7 +14,7 @@ const UploadPage = () => {
 
     const handleFileSelect = (event) => {
       const fileInput = event.target;
-      const fileText = document.getElementById('fileText');
+      const fileText = document.getElementById("fileText");
 
       if (fileInput.files.length > 0) {
         const fileName = fileInput.files[0].name;
@@ -43,7 +43,7 @@ const UploadPage = () => {
         const reader = new FileReader();
         reader.onload = function (e) {
           const data = e.target.result;
-          const workbook = XLSX.read(data, { type: 'binary' });
+          const workbook = XLSX.read(data, { type: "binary" });
 
           const sheetName = workbook.SheetNames[0];
           const sheet = workbook.Sheets[sheetName];
@@ -57,17 +57,21 @@ const UploadPage = () => {
       }
     };
 
-    fileInput.addEventListener('change', handleFileSelect);
-    document.getElementById('readButton').addEventListener('click', readExcelData);
+    fileInput.addEventListener("change", handleFileSelect);
+    document
+      .getElementById("readButton")
+      .addEventListener("click", readExcelData);
 
-    dropArea.addEventListener('dragover', handleDragOver);
-    dropArea.addEventListener('drop', handleDrop);
+    dropArea.addEventListener("dragover", handleDragOver);
+    dropArea.addEventListener("drop", handleDrop);
 
     return () => {
-      fileInput.removeEventListener('change', handleFileSelect);
-      document.getElementById('readButton').removeEventListener('click', readExcelData);
-      dropArea.removeEventListener('dragover', handleDragOver);
-      dropArea.removeEventListener('drop', handleDrop);
+      fileInput.removeEventListener("change", handleFileSelect);
+      document
+        .getElementById("readButton")
+        .removeEventListener("click", readExcelData);
+      dropArea.removeEventListener("dragover", handleDragOver);
+      dropArea.removeEventListener("drop", handleDrop);
     };
   }, []);
 
@@ -159,5 +163,3 @@ const UploadPage = () => {
 };
 
 export default UploadPage;
-
-
